@@ -1,4 +1,7 @@
-* {
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+    * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -10,3 +13,12 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+:root {
+	--brandBlue: #114C8C;
+	--brandDark: rgb(24, 53, 88);
+	--brandLight: rgb(0, 174, 217);
+	--borderColor: rgb(170, 177, 199);
+}
+`
+
+export default GlobalStyle
