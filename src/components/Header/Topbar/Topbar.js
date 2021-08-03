@@ -7,6 +7,7 @@ const StyledTopbar = styled.div`
   background-color: var(--brandBlue);
   color: white;
   padding: 0.7rem 1rem;
+  height: 36px;
   @media (min-width: 768px) {
     padding: 0.7rem 1.75rem;
   }
@@ -14,23 +15,24 @@ const StyledTopbar = styled.div`
     display: flex;
     justify-content: flex-end;
     gap: 4rem;
-    position: relative;
     z-index: 100;
     max-width: 1500px;
     margin: 0 auto;
-
+    position: relative;
   }
   #box {
-    &:first-child, &:nth-child(2) {
+
+    &:first-child,
+    &:nth-child(2) {
       display: none;
-			@media (min-width: 768px) {
+      @media (min-width: 768px) {
         display: block;
-				position: relative;
-			}
-		}
-		&:hover {
+        position: relative;
+      }
+    }
+    &:hover {
       text-shadow: 1px 1px 0px gray;
-		}
+    }
   }
   button {
     background-color: transparent;
@@ -52,17 +54,26 @@ const Topbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(null);
 
-	const handleClick = () => {
-		if(isOpen2 !== null) setIsOpen2(null)
-		setIsOpen(!isOpen)
-	}
+  const handleClick = () => {
+    if (isOpen2 !== null) setIsOpen2(null);
+    setIsOpen(!isOpen);
+  };
 
-	const handleClick2 = id => {
-		if(isOpen2 === id) return setIsOpen2(null)
-		if(isOpen) setIsOpen(false)
-		setIsOpen2(id)
-	}
+  const handleClose1 = () => {
+    setIsOpen(false)
+  }
 
+  
+  
+  const handleClick2 = (id) => {
+    if (isOpen2 === id) return setIsOpen2(null);
+    if (isOpen) setIsOpen(false);
+    setIsOpen2(id);
+  };
+  
+  const handleClose = () => {
+    setIsOpen2(null)
+  }
   const supportQuestions = [
     {
       name: "How does your process work?",
@@ -90,35 +101,35 @@ const Topbar = () => {
     { name: "careers", to: "/careers" },
   ];
   const howLinks = [
-    {name: 'buying from carvana'},
-    {name: 'selling or trading in'},
-    {name: 'certified cars'},
-    {name: 'referrals'},
-  ]
+    { name: "buying from carvana" },
+    { name: "selling or trading in" },
+    { name: "certified cars" },
+    { name: "referrals" },
+  ];
 
   return (
     <StyledTopbar>
       <div id="wrapper">
         <div id="box">
-          <button onClick={() => handleClick2('how')}>
+          <button onClick={() => handleClick2("how")}>
             <span>how it works</span>
-            <i class="fa fa-caret-down" aria-hidden="true" />
-            <Menu2 open={isOpen2 === 'how'} links={howLinks} />
+            <i className="fa fa-caret-down" aria-hidden="true" />
+            <Menu2 open={isOpen2 === "how"} links={howLinks} close={handleClose} />
           </button>
         </div>
         <div id="box">
-          <button onClick={() => handleClick2('about')}>
+          <button onClick={() => handleClick2("about")}>
             <span>about carvana</span>
-            <i class="fa fa-caret-down" aria-hidden="true" />
-            <Menu2 open={isOpen2 === 'about'} links={aboutLinks} />
+            <i className="fa fa-caret-down" aria-hidden="true" />
+            <Menu2 open={isOpen2 === "about"} links={aboutLinks} />
           </button>
         </div>
         <div id="box">
-          <button onClick={() => handleClick()}>
+          <button onClick={handleClick}>
             <span>support & contact</span>
-            <i class="fa fa-caret-down" aria-hidden="true" />
-            <Menu open={isOpen} questions={supportQuestions} />
+            <i className="fa fa-caret-down" aria-hidden="true" />
           </button>
+          <Menu open={isOpen} questions={supportQuestions} close={handleClose1} />
         </div>
       </div>
     </StyledTopbar>

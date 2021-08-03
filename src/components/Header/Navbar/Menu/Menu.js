@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import logo from "../../../../assets/bigLogo.png";
+import useOnClickOutside from 'use-onclickoutside'
 
 const StyledMenu = styled.div`
   position: absolute;
@@ -17,8 +18,8 @@ const StyledMenu = styled.div`
     display: none;
   }
   #header {
-    padding: 0 1rem;
-    padding-bottom: 1rem;
+    padding: 0 1.2rem;
+    padding-bottom: 1.2rem;
     height: 102px;
     display: flex;
     justify-content: flex-end;
@@ -124,8 +125,11 @@ const Menu = ({ open, close }) => {
       ],
     },
   ];
+
+  const ref = useRef()
+  useOnClickOutside(ref, close)
   return (
-    <StyledMenu open={open}>
+    <StyledMenu open={open} ref={ref}>
       <div id="header">
         <div id="logo">
           <img src={logo} alt="" />

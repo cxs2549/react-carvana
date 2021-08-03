@@ -1,4 +1,7 @@
+
+import { useRef } from "react";
 import styled from "styled-components";
+import useOnClickOutside from 'use-onclickoutside'
 
 const StyledMenu = styled.div`
   position: absolute;
@@ -25,12 +28,14 @@ const StyledMenu = styled.div`
   }
 `;
 
-const Menu2 = ({ open, links }) => {
+const Menu2 = ({ open, close, links }) => {
+  const ref = useRef()
+  useOnClickOutside(ref, close)
   return (
-    <StyledMenu open={open}>
+    <StyledMenu open={open} ref={ref}>
       <ul>
         {links.map((link, i) => (
-          <li>
+          <li key={i}>
             <a href="/">{link.name}</a>
           </li>
         ))}

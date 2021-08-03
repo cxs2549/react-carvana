@@ -98,7 +98,7 @@ const Navbar = () => {
         <div id="links">
           <ul>
             {links.map((link, i) => (
-              <li>
+              <li key={i}>
                 <a href="/">{link.name}</a>
               </li>
             ))}
