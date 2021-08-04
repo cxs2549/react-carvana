@@ -13,6 +13,7 @@ const StyledNavbar = styled.nav`
   padding: 0 1rem;
 	max-width: 1500px;
 	margin: 0 auto;
+  color: var(--brandDark);
 	@media (min-width: 1024px) {
 		padding: 0 1.75rem;
 	}
@@ -21,13 +22,16 @@ const StyledNavbar = styled.nav`
 	}
   a {
     text-decoration: none;
-    color: var(--brandDark);
+    color: inherit;
     text-transform: uppercase;
     font-weight: 600;
 		font-size: 96%;
 		@media (min-width: 1024px) {
 			font-size: 100%;
 		}
+    &:hover {
+      color: var(--brandLight);
+    }
   }
   #left {
     display: flex;
@@ -60,7 +64,7 @@ const StyledNavbar = styled.nav`
 			@media (min-width: 768px) {
 				display: block;
 			}
-      color: var(--brandLight);
+      color: var(--brandLight) !important;
     }
     svg {
       width: 30px;
@@ -123,8 +127,8 @@ const Navbar = () => {
           </svg>
         </div>
         <Menu open={isOpen} close={() => setIsOpen(false)} />
-        <div>
-          <a href="/" id="signInBtn">Sign in</a>
+        <div id="signInBtn">
+          <a href="/" >Sign in</a>
         </div>
       </div>
     </StyledNavbar>

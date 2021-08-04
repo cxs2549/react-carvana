@@ -1,14 +1,35 @@
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Menu from "./Menu/Menu";
-import { useState } from "react";
 import Menu2 from "./Menu2/Menu2";
+import useOnClickOutside from 'use-onclickoutside'
+
+// let useClickOutside = (handler) => {
+//   let domNode = useRef();
+
+//   useEffect(() => {
+//     let maybeHandler = (event) => {
+//       if (!domNode.current.contains(event.target)) {
+//         handler();
+//       }
+//     };
+
+//     document.addEventListener("mousedown", maybeHandler);
+
+//     return () => {
+//       document.removeEventListener("mousedown", maybeHandler);
+//     };
+//   });
+
+//   return domNode;
+// };
 
 const StyledTopbar = styled.div`
   background-color: var(--brandBlue);
   color: white;
   padding: 0.7rem 1rem;
   height: 36px;
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     padding: 0.7rem 1.75rem;
   }
   #wrapper {
@@ -21,7 +42,6 @@ const StyledTopbar = styled.div`
     position: relative;
   }
   #box {
-
     &:first-child,
     &:nth-child(2) {
       display: none;
@@ -29,9 +49,6 @@ const StyledTopbar = styled.div`
         display: block;
         position: relative;
       }
-    }
-    &:hover {
-      text-shadow: 1px 1px 0px gray;
     }
   }
   button {
@@ -44,36 +61,49 @@ const StyledTopbar = styled.div`
     font-weight: 600;
     font-size: 70%;
     cursor: pointer;
+    transition: color 200ms;
+    opacity: .9;
     @media (min-width: 768px) {
       font-size: 75%;
+    }
+    &:hover, &:focus {
+      opacity: 1;
     }
   }
 `;
 
 const Topbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpen2, setIsOpen2] = useState(null);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const [isOpen3, setIsOpen3] = useState(false);
 
   const handleClick = () => {
-    if (isOpen2 !== null) setIsOpen2(null);
+    if (!isOpen2) setIsOpen2(false);
+    if (!isOpen3) setIsOpen3(false);
     setIsOpen(!isOpen);
   };
 
-  const handleClose1 = () => {
-    setIsOpen(false)
-  }
-
-  
-  
-  const handleClick2 = (id) => {
-    if (isOpen2 === id) return setIsOpen2(null);
-    if (isOpen) setIsOpen(false);
-    setIsOpen2(id);
+  const handleClick2 = () => {
+    if (isOpen2) return setIsOpen2(false);
+    if (isOpen) return setIsOpen(false);
+    setIsOpen2(!isOpen2);
   };
-  
+  const handleClick3 = () => {
+    if (isOpen2) return setIsOpen2(false);
+    if (isOpen) return setIsOpen(false);
+    setIsOpen3(!isOpen3);
+  };
+  const handleClose1 = () => {
+    setIsOpen(false);
+  };
+  const handleClose3 = () => {
+    setIsOpen3(false);
+  };
+
+
   const handleClose = () => {
-    setIsOpen2(null)
-  }
+    setIsOpen2(null);
+  };
   const supportQuestions = [
     {
       name: "How does your process work?",
@@ -106,30 +136,48 @@ const Topbar = () => {
     { name: "certified cars" },
     { name: "referrals" },
   ];
+  // let menuRef = useClickOutside(() => {
+  //   handleClose1();
+  // });
+  // const menuRef2 = useClickOutside(() => {
+  //   handleClose();
+  // });
+
+  const menuRef = useRef()
+  const menuRef2 = useRef()
+  const menuRef3 = useRef()
+
+  useOnClickOutside(menuRef, handleClose1)
+  useOnClickOutside(menuRef2, handleClose)
+  useOnClickOutside(menuRef3, handleClose3)
 
   return (
     <StyledTopbar>
       <div id="wrapper">
-        <div id="box">
-          <button onClick={() => handleClick2("how")}>
+
+        
+
+        <div id="box" ref={menuRef2}>
+          <button onClick={handleClick2}>
             <span>how it works</span>
             <i className="fa fa-caret-down" aria-hidden="true" />
-            <Menu2 open={isOpen2 === "how"} links={howLinks} close={handleClose} />
+            <Menu2 open={isOpen2} links={howLinks} />
           </button>
         </div>
-        <div id="box">
-          <button onClick={() => handleClick2("about")}>
+        <div id="box" ref={menuRef3}>
+          <button onClick={handleClick3}>
             <span>about carvana</span>
             <i className="fa fa-caret-down" aria-hidden="true" />
-            <Menu2 open={isOpen2 === "about"} links={aboutLinks} />
+            <Menu2 open={isOpen3} links={aboutLinks} />
           </button>
         </div>
-        <div id="box">
+
+        <div id="box" ref={menuRef}>
+          <Menu open={isOpen} questions={supportQuestions} />
           <button onClick={handleClick}>
             <span>support & contact</span>
             <i className="fa fa-caret-down" aria-hidden="true" />
           </button>
-          <Menu open={isOpen} questions={supportQuestions} close={handleClose1} />
         </div>
       </div>
     </StyledTopbar>

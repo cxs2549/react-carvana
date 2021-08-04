@@ -49,6 +49,9 @@ const StyledMenu = styled.div`
         padding-right: 1.5rem;
         border-bottom: 1px solid var(--borderColor);
 				cursor: pointer;
+        &:hover, &:focus {
+          color: var(--brandLight);
+        }
         svg {
           max-width: 22px;
         }
@@ -56,10 +59,7 @@ const StyledMenu = styled.div`
           text-decoration: none;
           text-transform: uppercase;
           font-weight: 600;
-          color: var(--brandDark);
-          &:hover {
-            color: var(--brandLight);
-          }
+         
         }
         > div {
           display: flex;
@@ -80,6 +80,9 @@ const StyledMenu = styled.div`
           gap: 1.5rem;
           span {
             cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
       }
@@ -130,7 +133,7 @@ const Menu = ({ open, close }) => {
   useOnClickOutside(ref, close)
   return (
     <StyledMenu open={open} ref={ref}>
-      <div id="header">
+      <div id="header" onClick={close}>
         <div id="logo">
           <img src={logo} alt="" />
         </div>

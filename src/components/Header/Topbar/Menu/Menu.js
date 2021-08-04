@@ -1,19 +1,23 @@
 import styled from "styled-components";
-import { useState, useRef } from "react";
-import useOnClickOutside from 'use-onclickoutside'
+import { useState } from "react";
+
 
 const StyledMenu = styled.div`
   position: absolute;
   top: 25px;
   right: -1.75rem;
   left: initial;
-  width: 100%;
+  width: calc(100vw + 1.75rem);
+  height: calc(100vh - 36px);
   transform: ${(props) => (props.open ? "translateX(0)" : "translateX(155%)")};
   transition: transform 400ms;
   background-color: var(--brandBlue);
   z-index: 9;
   padding-bottom: 1rem;
-  max-width: 400px;
+  @media (min-width: 640px) {
+    max-width: 400px;
+
+  }
   @media (min-width: 1536px) {
     right: 0;
   }
@@ -21,6 +25,7 @@ const StyledMenu = styled.div`
     display: flex;
     flex-flow: column;
     margin: 0 auto;
+    max-width: 400px;
   }
   #chat {
     padding: 3rem 0 0 0;
@@ -88,21 +93,21 @@ const StyledMenu = styled.div`
       margin-top: 1.5rem;
       font-weight: 600;
       color: var(--brandLight);
+      cursor: pointer;
     }
   }
 `;
 
-const Menu = ({ open, close, questions }) => {
+const Menu = ({ open, questions }) => {
   const [show, setShow] = useState(null);
   const handleShow = (id) => {
     if (show === id) return setShow(null);
     setShow(id);
     console.log(id);
   };
-  const ref = useRef()
-  useOnClickOutside(ref, close)
+ 
   return (
-    <StyledMenu open={open} ref={ref}>
+    <StyledMenu open={open}>
       <div id="wrapper">
         <div id="chat">
           <div>

@@ -24,15 +24,14 @@ const StyledMenu = styled.div`
     a {
       text-decoration: none;
       color: var(--brandDark);
+      &:hover { color: var(--brandLight)}
     }
   }
 `;
 
-const Menu2 = ({ open, close, links }) => {
-  const ref = useRef()
-  useOnClickOutside(ref, close)
+const Menu2 = ({ open, links }) => {
   return (
-    <StyledMenu open={open} ref={ref}>
+    <StyledMenu open={open}>
       <ul>
         {links.map((link, i) => (
           <li key={i}>
