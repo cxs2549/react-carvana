@@ -11,9 +11,14 @@ const StyledNavbar = styled.nav`
   width: 100%;
   height: 60px;
   padding: 0 1rem;
-	max-width: 1500px;
+	max-width: var(--maxWidth);
 	margin: 0 auto;
   color: var(--brandDark);
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
 	@media (min-width: 1024px) {
 		padding: 0 1.75rem;
 	}

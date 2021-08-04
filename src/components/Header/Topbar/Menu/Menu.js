@@ -12,7 +12,7 @@ const StyledMenu = styled.div`
   transform: ${(props) => (props.open ? "translateX(0)" : "translateX(155%)")};
   transition: transform 400ms;
   background-color: var(--brandBlue);
-  z-index: 9;
+  z-index: 99;
   padding-bottom: 1rem;
   @media (min-width: 640px) {
     max-width: 400px;

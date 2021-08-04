@@ -1,34 +1,20 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import Menu from "./Menu/Menu";
 import Menu2 from "./Menu2/Menu2";
 import useOnClickOutside from 'use-onclickoutside'
 
-// let useClickOutside = (handler) => {
-//   let domNode = useRef();
-
-//   useEffect(() => {
-//     let maybeHandler = (event) => {
-//       if (!domNode.current.contains(event.target)) {
-//         handler();
-//       }
-//     };
-
-//     document.addEventListener("mousedown", maybeHandler);
-
-//     return () => {
-//       document.removeEventListener("mousedown", maybeHandler);
-//     };
-//   });
-
-//   return domNode;
-// };
 
 const StyledTopbar = styled.div`
   background-color: var(--brandBlue);
   color: white;
   padding: 0.7rem 1rem;
   height: 36px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
   @media (min-width: 1024px) {
     padding: 0.7rem 1.75rem;
   }
@@ -37,7 +23,7 @@ const StyledTopbar = styled.div`
     justify-content: flex-end;
     gap: 4rem;
     z-index: 100;
-    max-width: 1500px;
+    max-width: var(--maxWidth);
     margin: 0 auto;
     position: relative;
   }

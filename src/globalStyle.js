@@ -18,7 +18,10 @@ body {
 	--brandBlue: #114C8C;
 	--brandDark: rgb(24, 53, 88);
 	--brandLight: rgb(0, 174, 217);
+	--brandYellow: #FEB948;
 	--borderColor: rgb(170, 177, 199);
+
+	--maxWidth: 1710px;
 }
 `
 
