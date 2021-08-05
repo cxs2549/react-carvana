@@ -21,13 +21,14 @@ const StyledTopbar = styled.div`
   #wrapper {
     display: flex;
     justify-content: flex-end;
-    gap: 4rem;
+    gap: 4.5rem;
     z-index: 100;
     max-width: var(--maxWidth);
     margin: 0 auto;
     position: relative;
   }
   #box {
+    padding-left: 1rem;
     &:first-child,
     &:nth-child(2) {
       display: none;
@@ -122,12 +123,7 @@ const Topbar = () => {
     { name: "certified cars" },
     { name: "referrals" },
   ];
-  // let menuRef = useClickOutside(() => {
-  //   handleClose1();
-  // });
-  // const menuRef2 = useClickOutside(() => {
-  //   handleClose();
-  // });
+
 
   const menuRef = useRef()
   const menuRef2 = useRef()

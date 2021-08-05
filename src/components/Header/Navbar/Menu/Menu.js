@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState, useRef } from "react";
 import styled from "styled-components";
 import logo from "../../../../assets/bigLogo.png";
-import useOnClickOutside from 'use-onclickoutside'
+import useOnClickOutside from "use-onclickoutside";
 
 const StyledMenu = styled.div`
   position: absolute;
@@ -14,19 +14,25 @@ const StyledMenu = styled.div`
   transform: ${(props) => (props.open ? "scaleY(1)" : "scale(0)")};
   transform-origin: top right;
   transition: transform 400ms;
+  height: 100vh;
+  overflow-y: scroll;
   @media (min-width: 768px) {
     display: none;
   }
   #header {
-    padding: 0 1.2rem;
-    padding-bottom: 1.2rem;
+    padding: 0 1rem;
+    padding-top: 0.85rem;
     height: 102px;
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: flex-start;
     position: relative;
-    background-color: #fff;
+    background-color: #ffffff;
     box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
     button {
       background-color: transparent;
       border: none;
@@ -42,24 +48,29 @@ const StyledMenu = styled.div`
     }
   }
   #list {
+    margin-top: 22px;
+    height: 100vh;
     ul {
+      overflow-y: scroll;
       list-style-type: none;
       li {
         padding: 1rem 2rem;
         padding-right: 1.5rem;
         border-bottom: 1px solid var(--borderColor);
-				cursor: pointer;
-        &:hover, &:focus {
-          color: var(--brandLight);
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
         }
+
         svg {
           max-width: 22px;
+          color: var(--brandLight);
         }
-        a, p {
+        a,
+        p {
           text-decoration: none;
           text-transform: uppercase;
           font-weight: 600;
-         
         }
         > div {
           display: flex;
@@ -98,7 +109,7 @@ const Menu = ({ open, close }) => {
   };
   const links = [
     { name: "sign in", to: "/signin" },
-    { name: "search cars", to: "/search" },
+    { name: "search cars", to: "/cars" },
     { name: "sell/trade", to: "/sell-trade" },
     {
       name: "financing",
@@ -129,8 +140,8 @@ const Menu = ({ open, close }) => {
     },
   ];
 
-  const ref = useRef()
-  useOnClickOutside(ref, close)
+  const ref = useRef();
+  useOnClickOutside(ref, close);
   return (
     <StyledMenu open={open} ref={ref}>
       <div id="header" onClick={close}>
@@ -140,7 +151,6 @@ const Menu = ({ open, close }) => {
         <button onClick={close}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -159,14 +169,15 @@ const Menu = ({ open, close }) => {
           {links.map((link, i) => (
             <li key={i} onClick={() => handleShow(link.name)}>
               <div>
-                {link.to && <NavLink to={link.to}>{link.name}</NavLink>}
-								{link.sublinks && (
-									<p>{link.name}</p>
-								)}
+                {link.to && (
+                  <NavLink to={link.to} onClick={close}>
+                    {link.name}
+                  </NavLink>
+                )}
+                {link.sublinks && <p>{link.name}</p>}
                 {link.sublinks && (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"

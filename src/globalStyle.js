@@ -19,7 +19,7 @@ body {
 	--brandDark: rgb(24, 53, 88);
 	--brandLight: rgb(0, 174, 217);
 	--brandYellow: #FEB948;
-	--borderColor: rgb(170, 177, 199);
+	--borderColor: rgb(217, 221, 233);
 
 	--maxWidth: 1710px;
 }
