@@ -13,7 +13,6 @@ const StyledNavbar = styled.nav`
   width: 100%;
   height: 60px;
   padding: 0 1rem;
-  max-width: var(--maxWidth);
   margin: 0 auto;
   color: var(--brandDark);
   position: fixed;
@@ -21,12 +20,15 @@ const StyledNavbar = styled.nav`
   left: 0;
   background-color: #fff;
   width: 100%;
-  box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.2);
+  max-width: var(--maxWidth);
+ 
   @media (min-width: 1024px) {
     padding: 0 1.75rem;
   }
   @media (min-width: 1536px) {
     padding: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
   a {
     text-decoration: none;
@@ -71,6 +73,7 @@ const StyledNavbar = styled.nav`
         }
         li {
           position: relative;
+          cursor: pointer;
         }
       }
       #more {

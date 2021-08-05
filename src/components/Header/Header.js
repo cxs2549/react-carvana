@@ -6,9 +6,9 @@ const StyledHeader = styled.header`
  
   position: relative;
   z-index: 200;
-  max-width: var(--maxWidth);
   margin: 0 auto;
 	height: 97px;
+  box-shadow: 0 4px 2px -2px #3f3f3f41;
 `;
 
 const Header = () => {

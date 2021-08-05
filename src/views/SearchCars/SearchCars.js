@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Cards from "./Cards/Cards"
 import SearchFilter from "./SearchFilter/SearchFilter"
 
 const StyledSearch = styled.div`
@@ -9,6 +10,7 @@ const SearchCars = () => {
   return (
     <StyledSearch>
       <SearchFilter />
+      <Cards />
     </StyledSearch>
   )
 }

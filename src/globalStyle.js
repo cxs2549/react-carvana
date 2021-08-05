@@ -16,7 +16,7 @@ body {
 }
 :root {
 	--brandBlue: #114C8C;
-	--brandDark: rgb(24, 53, 88);
+	--brandDark: rgb(42, 85, 136);
 	--brandLight: rgb(0, 174, 217);
 	--brandYellow: #FEB948;
 	--borderColor: rgb(217, 221, 233);

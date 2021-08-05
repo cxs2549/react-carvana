@@ -87,6 +87,7 @@ const StyledSearchFilter = styled.div`
     button {
       border: 1px solid rgb(217, 221, 233);
       background-color: white;
+      color: var(--brandDark);
       border-radius: 4px;
       padding: 0px 11px;
       height: 45px;
@@ -98,6 +99,7 @@ const StyledSearchFilter = styled.div`
       align-items: center;
       justify-content: center;
       white-space: nowrap;
+      cursor: pointer;
       @media (min-width: 768px) {
         justify-content: space-between;
       }
