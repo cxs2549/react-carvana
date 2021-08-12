@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import heroMd from "../../../assets/hero-md.png";
 import heroXl from "../../../assets/hero.png";
+import Button from "../../../components/ui/Button/Button";
 
 const StyledHero = styled.div`
   height: 60vh;
@@ -43,15 +44,15 @@ const StyledHero = styled.div`
       font-size: 170%;
       position: relative;
       z-index: 1;
-      margin-bottom: .75rem;
+      margin-bottom: 0.75rem;
       transition: font-size 400ms;
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       @media (min-width: 768px) {
         font-size: 290%;
       }
       @media (min-width: 1024px) {
         font-size: 480%;
-        line-height: .85;
+        line-height: 0.85;
         margin-bottom: 1rem;
       }
       &::before {
@@ -65,13 +66,13 @@ const StyledHero = styled.div`
         background-color: var(--brandYellow);
         z-index: 2;
         @media (min-width: 1024px) {
-          top: 0
+          top: 0;
         }
       }
       span {
-        font-size: .7em;
+        font-size: 0.7em;
         @media (min-width: 1024px) {
-          font-size: .5em;
+          font-size: 0.5em;
         }
       }
     }
@@ -99,53 +100,10 @@ const StyledHero = styled.div`
       }
     }
     button {
-      width: 200px;
-      min-width: 88px;
-      font-size: 14px;
-      box-sizing: border-box;
-      min-height: 45px;
-      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      line-height: 20px;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: 0px;
-      display: inline-flex;
-      padding: 0px;
-      outline: none;
-      user-select: none;
-      align-items: center;
-      vertical-align: middle;
-      justify-content: center;
-      text-decoration: none;
-      border-radius: 3px;
-      margin-bottom: .5rem;
-      @media (min-width: 768px) {
-        height: 56px;
-        width: 250px;
-      }
-      @media (min-width: 1024px) {
-        font-size: 100%;
-      }
-      &:first-of-type {
-        background-color: var(--brandLight);
-        color: white;
-        &:hover {
-          background-color: white;
-          color: var(--brandLight);
-        }
-      }
       &:nth-of-type(2) {
-        color: var(--brandLight);
-        background-color: white;
         margin-top: 1rem;
         @media (min-width: 1024px) {
           margin-top: 0;
-        }
-        &:hover {
-          color: white;
-          background-color: var(--brandLight);
         }
       }
     }
@@ -156,7 +114,7 @@ const StyledHero = styled.div`
       color: white;
       position: relative;
       z-index: 1;
-    
+
       text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.201);
       &::before {
         content: "";
@@ -197,11 +155,11 @@ const Hero = () => {
         </h1>
         <p>Get pre-qualified to see personalized financing terms.</p>
         <div id="buttons">
-          <button>get pre-qualified</button>
+          <Button text="get pre-qualified" />
           <br />
           <span id="or">OR</span>
           <br />
-          <button>search all vehicles</button>
+          <Button text="search all vehicles" invert />
         </div>
       </div>
     </StyledHero>

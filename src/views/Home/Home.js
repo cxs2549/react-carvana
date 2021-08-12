@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Cards from "./Cards/Cards"
 import Hero from "./Hero/Hero"
 
 const StyledHome = styled.div`
@@ -9,6 +10,7 @@ const Home = () => {
   return (
     <StyledHome>
       <Hero />
+      <Cards />
     </StyledHome>
   )
 }

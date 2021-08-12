@@ -21,7 +21,7 @@ const StyledTopbar = styled.div`
   #wrapper {
     display: flex;
     justify-content: flex-end;
-    gap: 4.5rem;
+    gap: 2.5rem;
     z-index: 100;
     max-width: var(--maxWidth);
     margin: 0 auto;
@@ -50,9 +50,7 @@ const StyledTopbar = styled.div`
     cursor: pointer;
     transition: color 200ms;
     opacity: .9;
-    @media (min-width: 768px) {
-      font-size: 75%;
-    }
+   
     &:hover, &:focus {
       opacity: 1;
     }

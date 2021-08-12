@@ -33,7 +33,7 @@ const StyledSearchFilter = styled.div`
     }
     #searchbar {
       position: relative;
-      color: #577482;
+      color: #7e849a;
       > div:first-of-type {
         position: absolute;
         left: 1rem;
@@ -58,6 +58,9 @@ const StyledSearchFilter = styled.div`
         align-items: center;
         justify-content: center;
       }
+      input[type="search"] {
+        -webkit-appearance: none;
+      }
       input {
         width: 100%;
         padding: 0.75rem 2.5rem;
@@ -66,6 +69,9 @@ const StyledSearchFilter = styled.div`
         border: 1px solid var(--borderColor);
         font-size: 100%;
         background-color: #f4f8fa;
+        &::placeholder {
+          color: #7e849a;
+        }
       }
       #go {
         display: none;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StyledMenu = styled.div`
   position: absolute;
   top: 1.4rem;
-  left: 0;
+  right: 0;
   width: auto;
   background-color: white;
   color: black;
@@ -23,6 +23,10 @@ const StyledMenu = styled.div`
       padding-right: 2rem;
       width: 100%;
       text-align: start;
+      border-bottom: 1px solid var(--borderColor);
+      &:last-of-type {
+        border-bottom: none;
+      }
     }
     a {
       text-decoration: none;
